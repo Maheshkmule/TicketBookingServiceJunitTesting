@@ -3,24 +3,27 @@ pipeline {
     stages {
         stage('git repo & clean') {
             steps {
-//                bat "rmdir  /s /q TicketBookingServiceJunitTesting"
-//                 bat "git clone https://github.com/Maheshkmule/TicketBookingServiceJunitTesting.git"
-                bat "mvn clean -f TicketBookingServiceJunitTesting"
+               bat "rmdir  /s /q TicketBookingServiceJunitTesting"
+                bat "git clone https://github.com/Maheshkmule/TicketBookingServiceJunitTesting.git"
+                bat "mvn clean"
             }
         }
         stage('install') {
             steps {
-                bat "mvn install -f TicketBookingServiceJunitTesting"
+                bat "mvn install"
+                echo "Installing the maven---------"
             }
         }
         stage('test') {
             steps {
-                bat "mvn test -f TicketBookingServiceJunitTesting"
+                bat "mvn test"
+                echo "testing the maven---------"
             }
         }
         stage('package') {
             steps {
-                bat "mvn package -f TicketBookingServiceJunitTesting"
+                bat "mvn package"
+                echo "packaging the maven---------"
             }
         }
     }
